@@ -84,6 +84,59 @@ class LinkedList {
     return null;
   }
   /**
+   * Delete element from begining
+   */
+  deleteFirstNode() {
+    if (!this.head) {
+      return null;
+    }
+
+    if (!this.head.next) {
+      this.head = null;
+    }
+
+    this.head = this.head.next;
+  }
+  /**
+   * Delete element from last
+   */
+  deleteLastNode() {
+    let tail = this.head;
+    let prevNode;
+
+    if (!this.head) {
+      return;
+    }
+
+    if (!this.head.next) {
+      this.head = null;
+    }
+
+    while (tail.next) {
+      prevNode = tail;
+      tail = tail.next;
+    }
+    prevNode.next = null;
+  }
+  /**
+   * Delete element from Specified Index
+   * @param {*} index index
+   */
+  deleteElementFromParticularPoition(index) {
+    if (!this.head) {
+      return;
+    }
+
+    if (!this.head.next) {
+      this.head = null;
+    }
+
+    const prevNode = this.findPrevNode(index - 1);
+    let nodeToDelete = prevNode.next;
+    prevNode.next = nodeToDelete.next;
+  }
+
+  /**
    * Print linked list
    */
   print() {
@@ -104,6 +157,13 @@ LinkedListObject.add("30");
 LinkedListObject.add("40");
 LinkedListObject.addAtBegining("50");
 LinkedListObject.insertAtGivenPosition("100", 2);
+LinkedListObject.print();
+LinkedListObject.deleteElementFromParticularPoition(2);
+LinkedListObject.print();
+let LinkedListObject1 = new LinkedList();
+LinkedListObject1.print();
+LinkedListObject1.deleteElementFromParticularPoition(2);
+LinkedListObject1.print();
 LinkedListObject.print();
 
 /**
